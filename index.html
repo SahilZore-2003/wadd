@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="shortcut icon" href="whatapp logo.png" type="image/x-icon">
+    <title>Whats'app Quicker</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav{
+            background-color: #57ce63;
+            color: white;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 58px;
+        }
+
+        nav i{
+            font-size: 30px;
+        }
+
+        .container{
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding-bottom: 20px;
+        }
+
+        .number{
+            margin: 30px auto 50px;
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 12px;
+            border-bottom: 2px solid #57ce63;
+            
+        }
+
+        input{
+            border: none;
+            outline: none;
+            font-size: 25px;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+        button{
+            background-color: #57ce63;
+            color: white;
+            padding: 10px 30px;
+            font-weight: bold;
+            border: 2px solid white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: .3s linear;
+        }
+
+        button:hover{
+            background-color: #00ff1a;
+        }
+
+        button:disabled{
+            background-color: grey;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        @media (max-width:390px){
+            input{
+                font-size: 20px;
+            }
+        }
+
+        </style>
+</head>
+<body>
+
+    <nav>
+        <h1>Whats'app</h1>
+        <i class="fa-brands fa-whatsapp"></i>
+    </nav>
+
+    <div class="container">
+        
+        <span class="number">+91 <input type="tel" id="input" pattern="[1-9]{1}[0-9]{9}"></span>
+        <button id="button" disabled>Chat</button>
+        
+    </div>
+
+    <script>
+        input.addEventListener("input",()=>{
+             if(input.value.length == 10){
+                button.removeAttribute("disabled")
+             }else{
+                button.setAttribute("disabled","true")
+             }
+
+             button.innerHTML = `<a href="whatsapp://send?abid=${input.value}">Chat</a>`;
+        })
+    </script>
+    
+</body>
+</html>
